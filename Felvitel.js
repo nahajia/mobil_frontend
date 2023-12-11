@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Image, View, Text, TextInput } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import Ipcim from './Ipcim';
 
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
   const [bevitel1, setBevitel1] = useState('');
 
-  const SERVER_URL = 'http://10.0.0.219:3000';
+  const SERVER_URL = Ipcim.Ipcim;
 
   const createFormData = (photo, body = {}) => {
     const data = new FormData();
@@ -31,7 +32,7 @@ export default function ImagePickerExample() {
         return;
       }
 
-      const response = await fetch(`${SERVER_URL}/api/upload`, {
+      const response = await fetch(`${SERVER_URL}api/upload`, {
         method: 'POST',
         body: createFormData(image, { userId: '123', bevitel1 }),
         headers: {

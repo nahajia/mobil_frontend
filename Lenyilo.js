@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View, Button} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import Ipcim from './Ipcim'
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ const App = () => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch('http://10.0.0.235:3000/segedtabla');
+      const response = await fetch(Ipcim.Ipcim+'segedtabla');
       const json = await response.json();
       setData(json);
     } catch (error) {
